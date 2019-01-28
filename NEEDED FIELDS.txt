@@ -1,0 +1,36 @@
+[Info]
+MAC_Addr
+Current_User_Name
+Computer_Name
+IP_Addr
+System
+[Computer]
+CPU_Freq_in_MHz
+CPU.BrandName
+CPU
+Memory_in_Mb
+Total_HDD_in_Mb
+[Current_Config]
+Device_0
+Device_1
+Device_2
+Device_3
+Device_4
+Device_5
+[Hardware]
+Board Product
+Board vendor
+MEM1 asset Tag
+MEM1 bank
+MEM1 device
+MEM1 info
+MEM1 part N
+MEM1 Ser.N
+MEM1 vendor
+MEM2 asset Tag
+MEM2 bank
+MEM2 device
+MEM2 info
+MEM2 part N
+MEM2 Ser.N
+MEM2 vendor
