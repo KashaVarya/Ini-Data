@@ -8,7 +8,7 @@ Run create_database.py to create a new database with needed fields. If you had o
 
 _Second step:_
 
-Put all your .ini files in folder with name 'data'.
+Put all your .ini files in folder with name 'data'. Your files should to be in cp1251 or utf-8 encoding!
 
 _Third step:_
 
