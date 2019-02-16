@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <table border="1" cellspacing="0">
+        <thead>
+            <tr>
+                <th>MAC_Addr</th>
+                <th>Computer_Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for comp in computers %}
+            <tr>
+                <td>
+                    <a href="/details?id={{ comp[0] }}">{{ comp[1] }}</a>
+                </td>
+                <td>
+                    <a href="/details?id={{ comp[0] }}">{{ comp[2] }}</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
