@@ -1,7 +1,6 @@
 import os
 import sqlite3
 from glob import glob
-import os
 
 
 dbfiles = sorted(glob(os.getcwd() + '/database.db*'), reverse=True)

@@ -35,8 +35,11 @@ for filename in os.listdir(os.getcwd() + '/data'):
         pass
 
     # read data from ini-file
-    config = configparser.ConfigParser(delimiters=('=',))
-    config.read('data/' + filename)
+    try:
+        config = configparser.ConfigParser(delimiters=('=',))
+        config.read('data/' + filename)
+    except configparser.MissingSectionHeaderError:
+        continue
 
     # form result list
     result = list()
