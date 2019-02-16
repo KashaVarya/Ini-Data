@@ -1,9 +1,13 @@
 import os
 import sqlite3
+from glob import glob
+import os
 
-# if 'database.db' file exists, rename it
-if os.path.isfile('./database.db'):
-    os.rename('database.db', 'old_database.db')
+
+dbfiles = sorted(glob(os.getcwd() + '/database.db*'), reverse=True)
+for i in range(0, len(dbfiles)):
+    num = len(dbfiles) - i
+    os.rename(dbfiles[i], 'database.db.{}'.format(num))
 
 # read needed fields from file
 with open('NEEDED FIELDS.txt') as f:
