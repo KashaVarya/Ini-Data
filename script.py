@@ -25,6 +25,10 @@ for i in range(len(data)):
 conn = sqlite3.connect('database.db')
 cursor = conn.cursor()
 
+if not os.path.isdir(os.getcwd() + '/data'):
+    print("Please create 'data' subdir and put INI files there")
+    exit()
+
 for filename in os.listdir(os.getcwd() + '/data'):
     # convert files from cp1251 to utf-8 encoding
     try:
