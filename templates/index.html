@@ -9,6 +9,7 @@
             <tr>
                 <th>MAC_Addr</th>
                 <th>Computer_Name</th>
+                <th>Current_User_Name</th>
             </tr>
         </thead>
         <tbody>
@@ -19,6 +20,9 @@
                 </td>
                 <td>
                     <a href="/details?id={{ comp[0] }}">{{ comp[2] }}</a>
+                </td>
+            <td>
+                    <a href="/details?id={{ comp[0] }}">{{ comp[3] }}</a>
                 </td>
             </tr>
             {% endfor %}

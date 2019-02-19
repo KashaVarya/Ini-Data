@@ -13,7 +13,7 @@ def index_page():
     conn = sqlite3.connect('database.db')
     cur = conn.cursor()
 
-    cur.execute('SELECT `id`, `MAC_Addr`, `Computer_Name` from fields')
+    cur.execute('SELECT `id`, `MAC_Addr`, `Computer_Name`, `Current_User_Name` from fields')
     computers = cur.fetchall()
 
     return render_template('index.html', computers=computers)
