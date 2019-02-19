@@ -30,22 +30,27 @@ if not os.path.isdir(os.getcwd() + '/data'):
     exit()
 
 for filename in os.listdir(os.getcwd() + '/data'):
+    filename = 'data/' + filename
     # convert files from cp1251 to utf-8 encoding
     try:
-        with open('data/' + filename, "rb") as sourceFileBin:
+        with open(filename, "rb") as sourceFileBin:
             contents = sourceFileBin.read().decode('cp1251')
 
-        with open('data/' + filename, "wb") as targetFile:
+        with open(filename, "wb") as targetFile:
             targetFile.write(contents.encode("utf-8"))
     except UnicodeDecodeError:
         pass
 
     # read data from ini-file
     try:
-        config = configparser.ConfigParser(delimiters=('=',))
-        config.read('data/' + filename)
+        config = configparser.RawConfigParser(delimiters=('=',), allow_no_value=True, strict=False)
+        config.read(filename)
     except configparser.MissingSectionHeaderError:
         continue
+    except configparser.ParsingError:
+        print("error parsing {}, skipping".format(filename))
+    except UnicodeDecodeError:
+        print("failed reading {}, skipping".format(filename))
 
     # form result list
     result = list()
