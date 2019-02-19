@@ -56,12 +56,16 @@ for filename in os.listdir(os.getcwd() + '/data'):
 
     for key, values in fields.items():
         for field in values:
-            result.append(config[key][field])
+            try:
+                v = config[key][field]
+                result.append(v)
+            except KeyError:
+                result.append(None)
 
     # fill database
+    question_marks = ','.join(['?'] * (sum(len(v) for _, v in fields.items()) + 1))
     if not cursor.execute("SELECT MAC_Addr FROM fields WHERE MAC_Addr=?", (result[1],)).fetchone():
-        cursor.execute("INSERT INTO fields VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
-                       result)  # TODO: generate question marks
+        cursor.execute("INSERT INTO fields VALUES ({})".format(question_marks), result)
     else:
         usernames = cursor.execute("SELECT Current_User_Name FROM fields WHERE MAC_Addr=?",
                                    (result[1],)).fetchall()[0][0]
